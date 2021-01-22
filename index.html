@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>P-Values and longer titles that might not fit Oh this is good!</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Daniel Flores-Agreda" />
+    <script src="libs/header-attrs-2.6/header-attrs.js"></script>
+    <link rel="stylesheet" href="css/exts.css" type="text/css" />
+    <link rel="stylesheet" href="css/exts-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# P-Values and longer titles that might not fit Oh this is good!
+## A Sample Lecture
+### Daniel Flores-Agreda
+### 30/07/2020
+
+---
+
+
+
+.pull-left[
+# Aims of this lesson
+
+- Provide a reminder of the Statistical Testing approach. 
+
+- Define the P-value in a general sense.
+
+- Address common misunderstandings in its use. 
+]
+
+--
+
+.pull-right[
+# Outline
+
+1. Statistical testing
+
+2. P-values
+
+3. Misunderstandings and Misuses
+
+4. Some alternatives
+
+5. References
+]
+
+---
+class: inverse, center, middle
+
+# 1. Statistical Testing
+
+---
+# Formulation
+.pull-left[
+
+### Basic Elements
+
+- We have **Data** in the form of a **sample**.
+
+- There's a **Hypothesis** about the data generating process that we want to **falsify**.
+
+- We formulate an **Alternative** Hypothesis.
+
+- We compute a **Test Statistic** using the sample.
+
+]
+
+--
+
+.pull-right[
+
+### Testing procedure
+
+.content-box-red[
+ 
+How _plausible_ is it that I have obtained this Data _under the Null Hypothesis_ ?
+
+]
+
+.content-box-oil[
+
+Evidence _against the Null Hypothesis_:
+
+- The data are _incompatible_ with a specified statistical model.
+- _Reject it_ in favour of the Alternative.
+
+]
+
+.content-box-marine[
+
+_Not enough evidence against_ the Null: 
+
+- Do not Reject it
+
+]
+
+]
+
+---
+class: inverse, center, middle
+
+# 2. P-values
+
+--
+
+### A way of **quantifying** the incompatibility between the **Hypothesis** and the **Data**. 
+
+--
+
+### Measures how **_extreme_** is the value of the **test statistic**
+
+---
+
+# An illustration : Regression Coefficients
+
+.pull-left[
+.content-box-marine[
+
+`$$\log \frac{\mathbb{P}(\text{recovery})}{1-\mathbb{P}(\text{recovery})} = \beta_0 + \beta_1 \text{treatement} + \text{factors}$$`
+
+.content-box-oil[
+
+- **Null Hypothesis**: `\(H_0 : \beta_1 = 0\)`
+
+- **Data** 
+
+- **Test Statistic** `\(T\)`  
+
+`$$\hat{\beta}_{1}\overset{a}{\underset{H_0}{\sim}} N[0, \text{s.e.}(\hat{\beta}_{1})) \Rightarrow T = \frac{\hat{\beta}_{1}}{\text{s.e.}(\hat{\beta}_{1})} \overset{a}{\underset{H_0}{\sim}} N(0,1)$$`
+- **Alternative** Hypothesis `\(H_A:\beta_1\neq0\)`
+]
+]
+]
+]
+--
+.pull-right[
+&lt;img src="index_files/figure-html/unnamed-chunk-2-1.png" style="display: block; margin: auto;" /&gt;
+
+&lt;img src="index_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
+]
+---
+class: dark, center, middle
+
+## `\(P(|T| &gt; |t_{obs}|) &gt; \alpha \Rightarrow\)` **Do not Reject** `\(H_0\)`
+
+--
+
+## `\(P(|T| &gt; |t_{obs}|) &lt; \alpha \Rightarrow\)` **Reject** `\(H_0 \Rightarrow\)` **Accept** `\(H_A\)` 
+
+--
+
+## `\(\beta_1\)` is "statistically significant"
+
+---
+class: inverse, center, middle
+
+# 3. Misunderstandings and Misuses
+
+---
+
+class: center, middle
+
+&lt;img width="760" src="img/img-asastatement.png"&gt; &lt;/img&gt;
+
+
+---
+## P-values can indicate how incompatible the data are with a specified statistical model.
+
+### However... 
+
+--
+1. _P-values **do not measure the probability that the studied hypothesis is true**, or the **probability that the data were produced by random chance alone**_.
+
+--
+
+2. _Scientific conclusions and business or policy decisions **should not be based only on whether a p-value passes a specific threshold**_.
+
+--
+
+3. _Proper inference requires full reporting and transparency_
+
+--
+
+4. _A p-value, or statistical significance, **does not measure the size of an effect or the importance of a result**_.
+
+--
+
+5. _**By itself**, a p-value **does not provide a good measure** of evidence regarding a model or hypothesis._
+
+---
+class: center, middle
+
+&lt;img width="760" src="img/img-p-hacking.png"&gt; &lt;/img&gt;
+
+[Scientific Studies: Last Week Tonight with John Oliver (HBO)](https://youtu.be/0Rnq1NpHdmw)
+
+---
+class: center, middle
+
+&lt;img width="460" src="img/img-p-hacks.png"&gt; &lt;/img&gt;
+
+---
+class: inverse, center, middle
+
+# 4. Some alternatives
+
+--
+
+## **Confidence Intervals** 
+
+### Are random by construction. 
+
+### Provide the same inferential without some of the interpretation drawbacks.
+
+---
+class: center, middle
+
+&lt;img width="760" src="img/img-movingbeyond.png"&gt; &lt;/img&gt;
+
+---
+class: inverse, center, middle
+
+# 4. Some Sources
+
+---
+# Articles
+
+- Ziliak, S., &amp; McCloskey, D. N. (2008). The cult of statistical significance: How the standard error costs us jobs, justice, and lives. University of Michigan Press.
+- Ronald L. Wasserstein &amp; Nicole A. Lazar (2016) The ASA Statement on p-Values: Context, Process, and Purpose, The American Statistician, 70:2, 129-133,  [DOI:10.1080/00031305.2016.1154108](10.1080/00031305.2016.1154108)
+- Ronald L. Wasserstein, Allen L. Schirm &amp; Nicole A. Lazar (2019) Moving to a World Beyond "p&lt;0.05", The American Statistician, 73:sup1, 1-19, [DOI: 10.1080/00031305.2019.1583913](10.1080/00031305.2019.1583913)
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9",
+"navigation": {
+"scroll": true
+}
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
