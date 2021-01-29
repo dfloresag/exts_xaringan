@@ -456,7 +456,7 @@ See the next page for two HTML widgets.
 
 ---
 
-```{r out.width='100%', fig.height=6, eval=require('leaflet')}
+```{r out.width='100%', fig.height=6, eval=require('leaflet'), fig.align='center'}
 library(leaflet)
 leaflet() %>% 
   addTiles() %>% 
