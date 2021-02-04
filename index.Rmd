@@ -19,6 +19,8 @@ output:
 ```{r, include  = FALSE, message= FALSE, warning = FALSE}
 library(tidyverse)
 library(icon)
+library(htmlwidgets)
+library(leaflet)
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, fig.align='center')
 ```
 
@@ -142,7 +144,7 @@ Here are the goodies!
 
 ---
 
-# Some Syntax
+# `r icon::fontawesome("keyboard", style = "solid")` Some Syntax
 
 Provides an R Markdown output format `xaringan::moon_reader` as a wrapper for `remark.js`, and you can use it in the YAML metadata, e.g.
 
@@ -160,7 +162,6 @@ output:
 See the help page `?xaringan::moon_reader` for all possible options that you can use.
 
 ---
-
 # remark.js vs xaringan
 
 Some differences between using remark.js (left) and using **xaringan** (right):
@@ -244,7 +245,7 @@ background-size: cover
 `.content-box-red[]`
 ]
 .content-box-grey[
-`.content-box-oil[]`
+`.content-box-grey[]`
 ]
 .content-box-oil[
 `.content-box-oil[]`
@@ -321,292 +322,27 @@ Limitations:
 1. Math does not work on the title slide (see [#61](https://github.com/yihui/xaringan/issues/61) for a workaround).
 
 ---
-
-# Formulation
-.pull-left[
-
-### Basic Elements
-
-- We have **Data** in the form of a **sample**.
-
-- There's a **Hypothesis** about the data generating process that we want to **falsify**.
-
-- We formulate an **Alternative** Hypothesis.
-
-- We compute a **Test Statistic** using the sample.
-
-]
-
---
-
-.pull-right[
-
-### Testing procedure
-
-.content-box-red[
- 
-How _plausible_ is it that I have obtained this Data _under the Null Hypothesis_ ?
-
-]
-
-.content-box-oil[
-
-Evidence _against the Null Hypothesis_:
-
-- The data are _incompatible_ with a specified statistical model.
-- _Reject it_ in favour of the Alternative.
-
-]
-
-.content-box-marine[
-
-_Not enough evidence against_ the Null: 
-
-- Do not Reject it
-
-]
-
-]
-
----
-class: section, center, middle
-
-# 2. P-values
-
---
-
-### A way of **quantifying** the incompatibility between the **Hypothesis** and the **Data**. 
-
---
-
-### Measures how **_extreme_** is the value of the **test statistic**
-
----
-
-# An illustration : Regression Coefficients
+# `r icon::simple_icons("r")` Code Execution
 
 .pull-left[
-.content-box-marine[
-
-$$\log \frac{\mathbb{P}(\text{recovery})}{1-\mathbb{P}(\text{recovery})} = \beta_0 + \beta_1 \text{treatement} + \text{factors}$$
-
-.content-box-oil[
-
-- **Null Hypothesis**: $H_0 : \beta_1 = 0$
-
-- **Data** 
-
-- **Test Statistic** $T$  
-
-$$\hat{\beta}_{1}\overset{a}{\underset{H_0}{\sim}} N[0, \text{s.e.}(\hat{\beta}_{1})) \Rightarrow T = \frac{\hat{\beta}_{1}}{\text{s.e.}(\hat{\beta}_{1})} \overset{a}{\underset{H_0}{\sim}} N(0,1)$$
-- **Alternative** Hypothesis $H_A:\beta_1\neq0$
-]
-]
-]
-]
---
-.pull-right[
-```{r, fig.align='center', fig.height = 3}
-ggplot(data.frame(x = c(-4, 4)), aes(x))+ 
-  stat_function(fun = dnorm) +
-  ylab("density")
-```
-
-```{r, fig.align='center', fig.height = 3}
-ggplot(data.frame(x = c(-4, 4)), aes(x))+ 
-  stat_function(fun = dnorm) +
-  ylab("density")
-```
-]
----
-class: subsection, center, middle
-
-## $P(|T| > |t_{obs}|) > \alpha \Rightarrow$ **Do not Reject** $H_0$
-
---
-
-## $P(|T| > |t_{obs}|) < \alpha \Rightarrow$ **Reject** $H_0 \Rightarrow$ **Accept** $H_A$ 
-
---
-
-## $\beta_1$ is "statistically significant"
-
----
-class: section, center, middle
-
-# 3. Misunderstandings and Misuses
-
----
-
-class: center, middle
-
-<img width="760" src="img/img-asastatement.png"> </img>
-
-
----
-## P-values can indicate how incompatible the data are with a specified statistical model.
-
-### However... 
-
---
-1. _P-values **do not measure the probability that the studied hypothesis is true**, or the **probability that the data were produced by random chance alone**_.
-
---
-
-2. _Scientific conclusions and business or policy decisions **should not be based only on whether a p-value passes a specific threshold**_.
-
---
-
-3. _Proper inference requires full reporting and transparency_
-
---
-
-4. _A p-value, or statistical significance, **does not measure the size of an effect or the importance of a result**_.
-
---
-
-5. _**By itself**, a p-value **does not provide a good measure** of evidence regarding a model or hypothesis._
-
----
-class: center, middle
-
-<img width="760" src="img/img-p-hacking.png"> </img>
-
-[Scientific Studies: Last Week Tonight with John Oliver (HBO)](https://youtu.be/0Rnq1NpHdmw)
-
----
-class: center, middle
-
-<img width="460" src="img/img-p-hacks.png"> </img>
-
----
-class: section, center, middle
-
-# 4. Some alternatives
-
---
-
-## **Confidence Intervals** 
-
-### Are random by construction. 
-
-### Provide the same inferential without some of the interpretation drawbacks.
-
----
-class: center, middle
-
-<img width="760" src="img/img-movingbeyond.png"> </img>
-
----
-class: section, center, middle
-
-# 4. Some Sources
-
----
-
-background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/be/Sharingan_triple.svg)
-
-```{r setup, include=FALSE}
-options(htmltools.dir.version = FALSE)
-```
-
-???
-
-Image credit: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sharingan_triple.svg)
-
----
-class: center, middle
-
-# xaringan
-
-### /ʃaː.'riŋ.ɡan/
-
----
-class: section, center, middle
-
-# Get Started
-
----
-
-
-
-
----
-background-image: url(`r xaringan:::karl`)
-background-position: 50% 50%
-class: center, bottom, section
-
-# You only live once!
-
----
-
-# Hello Ninja
-
-As a presentation ninja, you certainly should not be satisfied by the "Hello World" example. You need to understand more about two things:
-
-1. The [remark.js](https://remarkjs.com) library;
-
-1. The **xaringan** package;
-
-Basically **xaringan** injected the chakra of R Markdown (minus Pandoc) into **remark.js**. The slides are rendered by remark.js in the web browser, and the Markdown source needed by remark.js is generated from R Markdown (**knitr**).
-
----
-
-# remark.js
-
-You can see an introduction of remark.js from [its homepage](https://remarkjs.com). You should read the [remark.js Wiki](https://github.com/gnab/remark/wiki) at least once to know how to
-
-- create a new slide (Markdown syntax<sup>*</sup> and slide properties);
-
-- format a slide (e.g. text alignment);
-
-- configure the slideshow;
-
-- and use the presentation (keyboard shortcuts).
-
-It is important to be familiar with remark.js before you can understand the options in **xaringan**.
-
-.footnote[[*] It is different with Pandoc's Markdown! It is limited but should be enough for presentation purposes. Come on... You do not need a slide for the Table of Contents! Well, the Markdown support in remark.js [may be improved](https://github.com/gnab/remark/issues/142) in the future.]
-
----
-background-image: url(`r xaringan:::karl`)
-background-size: cover
-class: center, bottom, section
-
-# I was so happy to have discovered remark.js!
-
----
-class: section, middle, center
-
-# Using xaringan
-
-
-
----
-
-# R Code
-
-```{r comment='#'}
+```{r, echo = TRUE, comment='#'}
 # a boring regression
 fit = lm(dist ~ 1 + speed, data = cars)
 coef(summary(fit))
-dojutsu = c('地爆天星', '天照', '加具土命', '神威', '須佐能乎', '無限月読')
-grep('天', dojutsu, value = TRUE)
 ```
+]
 
----
-
-# R Plots
-
-```{r cars, fig.height=4, dev='svg'}
+.pull-right[
+```{r cars, echo = TRUE, fig.height=3.5, dev='svg'}
 par(mar = c(4, 4, 1, .1))
 plot(cars, pch = 19, col = 'darkgray', las = 1)
 abline(fit, lwd = 2)
 ```
-
+]
 ---
 
-# Tables
+
+# `r icon::simple_icons("r")` Tables
 
 If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,
 
@@ -615,18 +351,22 @@ knitr::kable(head(iris), format = 'html')
 ```
 
 ---
+# `r icon::fontawesome("code")` HTML Widgets
 
-# HTML Widgets
+In the words of the author, this is not bulletproof, 
 
-I have not thoroughly tested HTML widgets against **xaringan**. Some may work well, and some may not. It is a little tricky.
+.exts-blockquote[It is a little tricky.]
 
-Similarly, the Shiny mode (`runtime: shiny`) does not work. I might get these issues fixed in the future, but these are not of high priority to me. I never turn my presentation into a Shiny app. When I need to demonstrate more complicated examples, I just launch them separately. It is convenient to share slides with other people when they are plain HTML/JS applications.
+Unfortunately, Shiny mode (`runtime: shiny`) does not work. Again, in the words of the author: 
 
-See the next page for two HTML widgets.
+.exts-blockquote[I might get these issues fixed in the future, but these are not of high priority to me. I never turn my presentation into a Shiny app.]
+
+The following slides are supposed to have examples however, they might not work.
 
 ---
+## `{leaflet}`
 
-```{r out.width='100%', fig.height=6, eval=require('leaflet'), fig.align='center'}
+```{r ,out.width='100%', fig.height=6, eval=require('leaflet'), fig.align='center'}
 library(leaflet)
 leaflet() %>% 
   addTiles() %>% 
@@ -634,29 +374,16 @@ leaflet() %>%
 ```
 
 ---
+## `{DT}`
 
-```{r eval=require('DT'), tidy=FALSE}
+```{r, echo = TRUE, eval=require('DT'), tidy=FALSE}
 DT::datatable(
   head(iris, 10),
   fillContainer = FALSE, options = list(pageLength = 8)
 )
 ```
-
 ---
-
-# Some Tips
-
-- Do not forget to try the `yolo` option of `xaringan::moon_reader`.
-
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        yolo: true
-    ```
-
----
-
-# Some Tips
+# Some Presentation Tips
 
 - Slides can be automatically played if you set the `autoplay` option under `nature`, e.g. go to the next slide every 30 seconds in a lightning talk:
 
@@ -699,7 +426,7 @@ DT::datatable(
 
 - The title slide is created automatically by **xaringan**, but it is just another remark.js slide added before your other slides.
 
-    The title slide is set to `class: center, middle, section, title-slide` by default. You can change the classes applied to the title slide with the `titleSlideClass` option of `nature` (`title-slide` is always applied).
+- The title slide is set to `class: center, middle, section, title-slide` by default. You can change the classes applied to the title slide with the `titleSlideClass` option of `nature` (`title-slide` is always applied).
 
     ```yaml
     output:
@@ -749,6 +476,7 @@ An example using a leading `*`:
     }
     ```
 Output:
+
 ```r
 if (TRUE) {
 * message("Very important!")
@@ -768,6 +496,7 @@ if (TRUE) {
 }
 ```
 ````
+
 Output:
 ```{r tidy=FALSE}
 if (TRUE) {
@@ -784,19 +513,7 @@ It is valid R code so you can run it. Note that `{{}}` can wrap an R expression 
 
 An example of using the trailing comment `#<<` to highlight lines:
 
-````markdown
-`r ''````{r tidy=FALSE}
-library(ggplot2)
-ggplot(mtcars) + 
-  aes(mpg, disp) + 
-  geom_point() +   #<<
-  geom_smooth()    #<<
-```
-````
-
-Output:
-
-```{r tidy=FALSE, eval=FALSE}
+```{r echo = TRUE, tidy=FALSE, eval=FALSE}
 library(ggplot2)
 ggplot(mtcars) + 
   aes(mpg, disp) + 
@@ -925,20 +642,6 @@ names(xaringan:::list_css())
 ```
 
 ---
-
-# Themes
-
-To use a theme, you can specify the `css` option as an array of CSS filenames (without the `.css` extensions), e.g.,
-
-```yaml
-output:
-  xaringan::moon_reader:
-    css: [default, metropolis, metropolis-fonts]
-```
-
-If you want to contribute a theme to **xaringan**, please read [this blog post](https://yihui.org/en/2017/10/xaringan-themes).
-
----
 class: section, middle, center
 background-image: url(https://upload.wikimedia.org/wikipedia/commons/3/39/Naruto_Shiki_Fujin.svg)
 background-size: contain
@@ -1009,8 +712,8 @@ Slides created via the R package [**xaringan**](https://github.com/yihui/xaringa
 The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](https://yihui.org/knitr), and [R Markdown](https://rmarkdown.rstudio.com).
 
 
-# Articles
+<!-- # Articles -->
 
-- Ziliak, S., & McCloskey, D. N. (2008). The cult of statistical significance: How the standard error costs us jobs, justice, and lives. University of Michigan Press.
-- Ronald L. Wasserstein & Nicole A. Lazar (2016) The ASA Statement on p-Values: Context, Process, and Purpose, The American Statistician, 70:2, 129-133,  [DOI:10.1080/00031305.2016.1154108](10.1080/00031305.2016.1154108)
-- Ronald L. Wasserstein, Allen L. Schirm & Nicole A. Lazar (2019) Moving to a World Beyond "p<0.05", The American Statistician, 73:sup1, 1-19, [DOI: 10.1080/00031305.2019.1583913](10.1080/00031305.2019.1583913)
+<!-- - Ziliak, S., & McCloskey, D. N. (2008). The cult of statistical significance: How the standard error costs us jobs, justice, and lives. University of Michigan Press. -->
+<!-- - Ronald L. Wasserstein & Nicole A. Lazar (2016) The ASA Statement on p-Values: Context, Process, and Purpose, The American Statistician, 70:2, 129-133,  [DOI:10.1080/00031305.2016.1154108](10.1080/00031305.2016.1154108) -->
+<!-- - Ronald L. Wasserstein, Allen L. Schirm & Nicole A. Lazar (2019) Moving to a World Beyond "p<0.05", The American Statistician, 73:sup1, 1-19, [DOI: 10.1080/00031305.2019.1583913](10.1080/00031305.2019.1583913) -->

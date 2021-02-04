@@ -34,7 +34,7 @@ a, a > code {
 
 /* important code slightly blue */
 .remark-code-line-highlighted {
-  background-color: #97BBD5 !important;
+  background-color: #cf0000 !important;
 }
 
 /* section separator */
@@ -389,14 +389,15 @@ body{
 }
 
 /* midd blockquote */
-.monash-blockquote {
+
+.exts-blockquote {
   display: block;
   margin-top: .5em;
   margin-bottom: .5em;
   margin-left: 40px;
   margin-right: 40px;
-  border-left: solid 10px #006DAE;
-  background-color: lightgrey;
+  border-left: solid 10px #cf0000;
+  background-color: #425556;
   padding: 1em;
   color: #fff;
   -moz-border-radius: 5px;
