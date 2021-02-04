@@ -1,59 +1,327 @@
 ---
-title: "P-Values and longer titles that might not fit Oh this is good!"
-subtitle: "A Sample Lecture"
+title: "`{xaringan}`"
+subtitle: "A Presentation Template for the .red[Extension School]"
 author: "Daniel Flores-Agreda"
-date: "30/07/2020"
+date: "4/02/2021"
 output:
   xaringan::moon_reader:
-    css: ["css/exts.css", "css/exts-fonts.css"]
+    css: ["default", "css/exts.css", "css/exts-fonts.css"]
     lib_dir: libs
     nature:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
-      # ratio: '4:3' # alternatives '16:9' or '4:3' or others e.g. 13:9
-      ratio: '16:9'
+      ratio: '16:9' # alternatives '16:9' or '4:3' or others e.g. 13:9
       navigation:
         scroll: true # disable slide transitions by scrolling
 ---
+
 ```{r, include  = FALSE, message= FALSE, warning = FALSE}
-library(ggplot2)
-library(dplyr)
+library(tidyverse)
+library(icon)
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, fig.align='center')
 ```
 
+class: section, center, middle
+
+# `r icon::fontawesome("download", style = "solid")` Installation 
+
+---
+
+# `r icon::fontawesome("download", style = "solid")` Installation 
+
+- The `{xaringan}` package is on [CRAN](https://cran.r-project.org/web/packages/xaringan/index.html) and the development version on the [github repo](https://github.com/yihui/xaringan)
+
+- Either can be installed using the usual `R` commands:
+
+```r
+install.packages("xaringan")
+
+devtools::install_github('yihui/xaringan')
+```
+
+--
+
+- The `exts_xaringan` [github repo](https://github.com/dfloresag/exts_xaringan) contains this template, as well as the assets: 
+
+--
+
 .pull-left[
-# Aims of this lesson
 
-- Provide a reminder of the Statistical Testing approach. 
+The style sheets 
 
-- Define the P-value in a general sense.
+- `exts.css`
 
-- Address common misunderstandings in its use. 
+- `exts-fonts.css`
 ]
 
 --
 
 .pull-right[
-# Outline
 
-1. Statistical testing
+A set of images and graphical `assets`, in particular the .red[EXTS Logo]
 
-2. P-values
+- `assets/EXTS_Logo_Standalone.svg`
 
-3. Misunderstandings and Misuses
+]
 
-4. Some alternatives
+--
 
-5. References
+- To kickstart your presentation, feel free to clone the repo and make changes on this template. 
+
+---
+
+# `r icon::fontawesome("download", style = "solid")` Installation 
+
+
+
+- Click the `Knit` button to compile it;
+
+
+- or use the [RStudio Addin](https://rstudio.github.io/rstudioaddins/)<sup>1</sup> "Infinite Moon Reader" to live preview the slides 
+    - every time you update and save the Rmd document, the slides will be automatically reloaded in RStudio Viewer.
+
+- Icons can be inserted  _inline_ using the package `{icon}`
+
+    - `r icon::simple_icons("github")` :  `icon::simple_icons("github")`     
+    
+    -  Here is full list of [`fontawewsome`](https://fontawesome.com/icons?d=gallery), [`simpleicons`](https://simpleicons.org/?q=html) and [academicicons](https://jpswalsh.github.io/academicons/)
+
+
+.footnote[
+[1] See [#2](https://github.com/yihui/xaringan/issues/2) if you do not see the template or addin in RStudio.
+]
+
+
+---
+background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/be/Sharingan_triple.svg)
+background-size: 550px
+background-position: 50% 50%
+
+class: section, center, middle
+
+# `{xaringan}`
+
+---
+# `r icon::fontawesome("thumbs-up", style = "solid")` What's .red[good] about `{xaringan}`? 
+
+--
+
+### `r icon::simple_icons("javascript")` based on [`remark.js`](https://remarkjs.com/#1)
+
+### `r icon::simple_icons("markdown")` Mardown typsetting
+
+### `r icon::simple_icons("css3")` Easy customisation with CSS style sheets.
+
+### `r icon::simple_icons("r")` Well integrated with `R`
+
+### `r icon::simple_icons("html5")` Rendered in `html` and easily deployed on the web
+
+---
+# `r icon::fontawesome("thumbs-up", style = "solid")` What's .red[good] about `{xaringan}`? 
+
+### `r icon::fontawesome("keyboard", style = "solid")` Keyboard shortcuts
+
+- **h** for a list of the shortcuts.
+
+- **p** for presentation mode 
+
+  - Displays a timer, presentation notes as well as current and the next slide.
+
+  - You can write slide notes under three question marks `???`. 
+  
+  - These notes are only displayed in the presentation mode, and only the speaker can see these notes and play well with separate screens.
+
+- **c** clones slideshow to a separate screen (which plays well with presentation mode)
+
+- **m** mirrors the slide
+
+???
+
+Here are the goodies!
+
+---
+
+# Some Syntax
+
+Provides an R Markdown output format `xaringan::moon_reader` as a wrapper for `remark.js`, and you can use it in the YAML metadata, e.g.
+
+```yaml
+---
+title: "A Cool Presentation"
+output:
+  xaringan::moon_reader:
+    yolo: true
+    nature:
+      autoplay: 30000
+---
+```
+
+See the help page `?xaringan::moon_reader` for all possible options that you can use.
+
+---
+
+# remark.js vs xaringan
+
+Some differences between using remark.js (left) and using **xaringan** (right):
+
+.pull-left[
+1. Start with a boilerplate HTML file;
+
+1. Plain Markdown;
+
+1. Write JavaScript to autoplay slides;
+
+1. Manually configure MathJax;
+
+1. Highlight code with `*`;
+
+1. Edit Markdown source and refresh browser to see updated slides;
+]
+
+.pull-right[
+1. Start with an R Markdown document;
+
+1. R Markdown (can embed R/other code chunks);
+
+1. Provide an option `autoplay`;
+
+1. MathJax just works;<sup>*</sup>
+
+1. {{Highlight}} code with `{{}}`;
+
+1. The RStudio addin "Infinite Moon Reader" automatically refreshes slides on changes;
+]
+
+.footnote[[*] With some caveats.]
+
+
+---
+class: subsection, center, middle
+
+# `r icon::fontawesome("images", style = "solid")` Background Images
+
+---
+background-image: url("assets/image_orig.jpeg")
+background-size: cover
+class: bottom left
+
+--
+
+
+.footnote[
+.content-box-marine[
+```
+background-image: url("assets/image_orig.jpeg")
+background-size: cover
+```
+]
+
 ]
 
 ---
-class: inverse, center, middle
+# `r icon::fontawesome("palette", style = "solid")` Colored Elements
 
-# 1. Statistical Testing
+.pull-left[
+### Colored Text<sup>*<sup>
+
+| Color |Syntax | HEX |
+|:------:|:-------:|:-----:|
+|.red[Red] | .red[`.red[Red]`] | .red[`#CF0000`] | 
+|.grey[Grey] | .grey[`.grey[Grey]`] | .grey[`#3F3C3A`] | 
+|.oil["Oil"] | .oil[`.oil["Oil"]`] | .oil[`#425556`] | 
+|.marine["Marine"] | .marine[`.marine["Marine"]`] | .marine[`#00A79F`] | 
+
+
+]
+
+
+--
+
+.pull-right[
+### Content Boxes
+.content-box-red[
+`.content-box-red[]`
+]
+.content-box-grey[
+`.content-box-oil[]`
+]
+.content-box-oil[
+`.content-box-oil[]`
+]
+.content-box-marine[
+`.content-box-marine[]`
+]
+
+]
+
+--
+.footnote[
+[*] And of course, WHITE. 
+]
 
 ---
+class: section, center, middle
+
+# Section Separator 
+
+.footnote[
+.content-box-marine[
+```
+class: section, center, middle
+```
+]
+]
+
+---
+class: subsection, center, middle
+
+# Subsection Separator
+
+.footnote[
+.content-box-marine[
+```
+class: subsection, center, middle
+```
+]
+]
+
+---
+class: subsubsection, center, middle
+
+# Subsubsection Separator
+
+.footnote[
+.content-box-grey[
+```
+class: subsection, center, middle
+```
+]
+]
+---
+# `r icon::fontawesome("graduation-cap", style = "solid")` Math Expressions
+
+You can write LaTeX math expressions inside a pair of dollar signs, e.g. &#36;\alpha+\beta$ renders $\alpha+\beta$. You can use the display style with double dollar signs:
+
+```
+$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$
+```
+
+$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$
+
+Limitations:
+
+1. The source code of a LaTeX math expression must be in one line, unless it is inside a pair of dollar signs `$$`
+  - the starting `$$` must appear in the very beginning of a line, followed immediately by a non-space character,
+  
+  - the ending `$$` must be at the end of a line, led by a non-space character;
+
+1. There should not be spaces after the opening `$` or before the closing `$`.
+
+1. Math does not work on the title slide (see [#61](https://github.com/yihui/xaringan/issues/61) for a workaround).
+
+---
+
 # Formulation
 .pull-left[
 
@@ -101,7 +369,7 @@ _Not enough evidence against_ the Null:
 ]
 
 ---
-class: inverse, center, middle
+class: section, center, middle
 
 # 2. P-values
 
@@ -151,7 +419,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x))+
 ```
 ]
 ---
-class: dark, center, middle
+class: subsection, center, middle
 
 ## $P(|T| > |t_{obs}|) > \alpha \Rightarrow$ **Do not Reject** $H_0$
 
@@ -164,7 +432,7 @@ class: dark, center, middle
 ## $\beta_1$ is "statistically significant"
 
 ---
-class: inverse, center, middle
+class: section, center, middle
 
 # 3. Misunderstandings and Misuses
 
@@ -212,7 +480,7 @@ class: center, middle
 <img width="460" src="img/img-p-hacks.png"> </img>
 
 ---
-class: inverse, center, middle
+class: section, center, middle
 
 # 4. Some alternatives
 
@@ -230,7 +498,7 @@ class: center, middle
 <img width="760" src="img/img-movingbeyond.png"> </img>
 
 ---
-class: inverse, center, middle
+class: section, center, middle
 
 # 4. Some Sources
 
@@ -254,44 +522,19 @@ class: center, middle
 ### /ʃaː.'riŋ.ɡan/
 
 ---
-class: inverse, center, middle
+class: section, center, middle
 
 # Get Started
 
 ---
 
-# Hello World
 
-Install the **xaringan** package from [Github](https://github.com/yihui/xaringan):
 
-```{r eval=FALSE, tidy=FALSE}
-devtools::install_github("yihui/xaringan")
-```
-
---
-
-You are recommended to use the [RStudio IDE](https://www.rstudio.com/products/rstudio/), but you do not have to.
-
-- Create a new R Markdown document from the menu `File -> New File -> R Markdown -> From Template -> Ninja Presentation`;<sup>1</sup>
-
---
-
-- Click the `Knit` button to compile it;
-
---
-
-- or use the [RStudio Addin](https://rstudio.github.io/rstudioaddins/)<sup>2</sup> "Infinite Moon Reader" to live preview the slides (every time you update and save the Rmd document, the slides will be automatically reloaded in RStudio Viewer.
-
-.footnote[
-[1] 中文用户请看[这份教程](https://slides.yihui.org/xaringan/zh-CN.html)
-
-[2] See [#2](https://github.com/yihui/xaringan/issues/2) if you do not see the template or addin in RStudio.
-]
 
 ---
 background-image: url(`r xaringan:::karl`)
 background-position: 50% 50%
-class: center, bottom, inverse
+class: center, bottom, section
 
 # You only live once!
 
@@ -328,89 +571,16 @@ It is important to be familiar with remark.js before you can understand the opti
 ---
 background-image: url(`r xaringan:::karl`)
 background-size: cover
-class: center, bottom, inverse
+class: center, bottom, section
 
 # I was so happy to have discovered remark.js!
 
 ---
-class: inverse, middle, center
+class: section, middle, center
 
 # Using xaringan
 
----
 
-# xaringan
-
-Provides an R Markdown output format `xaringan::moon_reader` as a wrapper for remark.js, and you can use it in the YAML metadata, e.g.
-
-```yaml
----
-title: "A Cool Presentation"
-output:
-  xaringan::moon_reader:
-    yolo: true
-    nature:
-      autoplay: 30000
----
-```
-
-See the help page `?xaringan::moon_reader` for all possible options that you can use.
-
----
-
-# remark.js vs xaringan
-
-Some differences between using remark.js (left) and using **xaringan** (right):
-
-.pull-left[
-1. Start with a boilerplate HTML file;
-
-1. Plain Markdown;
-
-1. Write JavaScript to autoplay slides;
-
-1. Manually configure MathJax;
-
-1. Highlight code with `*`;
-
-1. Edit Markdown source and refresh browser to see updated slides;
-]
-
-.pull-right[
-1. Start with an R Markdown document;
-
-1. R Markdown (can embed R/other code chunks);
-
-1. Provide an option `autoplay`;
-
-1. MathJax just works;<sup>*</sup>
-
-1. Highlight code with `{{}}`;
-
-1. The RStudio addin "Infinite Moon Reader" automatically refreshes slides on changes;
-]
-
-.footnote[[*] Not really. See next page.]
-
----
-
-# Math Expressions
-
-You can write LaTeX math expressions inside a pair of dollar signs, e.g. &#36;\alpha+\beta$ renders $\alpha+\beta$. You can use the display style with double dollar signs:
-
-```
-$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$
-```
-
-$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$
-
-Limitations:
-
-1. The source code of a LaTeX math expression must be in one line, unless it is inside a pair of double dollar signs, in which case the starting `$$` must appear in the very beginning of a line, followed immediately by a non-space character, and the ending `$$` must be at the end of a line, led by a non-space character;
-
-1. There should not be spaces after the opening `$` or before the closing `$`.
-
-1. Math does not work on the title slide (see [#61](https://github.com/yihui/xaringan/issues/61) for a workaround).
 
 ---
 
@@ -529,13 +699,13 @@ DT::datatable(
 
 - The title slide is created automatically by **xaringan**, but it is just another remark.js slide added before your other slides.
 
-    The title slide is set to `class: center, middle, inverse, title-slide` by default. You can change the classes applied to the title slide with the `titleSlideClass` option of `nature` (`title-slide` is always applied).
+    The title slide is set to `class: center, middle, section, title-slide` by default. You can change the classes applied to the title slide with the `titleSlideClass` option of `nature` (`title-slide` is always applied).
 
     ```yaml
     output:
       xaringan::moon_reader:
         nature:
-          titleSlideClass: [top, left, inverse]
+          titleSlideClass: [top, left, section]
     ```
     
 --
@@ -769,7 +939,7 @@ output:
 If you want to contribute a theme to **xaringan**, please read [this blog post](https://yihui.org/en/2017/10/xaringan-themes).
 
 ---
-class: inverse, middle, center
+class: section, middle, center
 background-image: url(https://upload.wikimedia.org/wikipedia/commons/3/39/Naruto_Shiki_Fujin.svg)
 background-size: contain
 

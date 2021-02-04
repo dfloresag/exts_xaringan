@@ -1,15 +1,15 @@
 /*
 CSS for xaringan slides in Extension School
 (heavily) based on the Middlebury College flavor by Joseph V. Casillas
-some cues were taken from the Sydney U Template by Garth Tarr
+some cues were taken from the Sydney U Template by Gassetsh Tarr
 Author: Daniel Flores Agreda
-Updated: 06/29/2018
+Updated: 04
 */
 
 /* 
 Primary Palette:
 
-red     : #E40511
+red     : #cf0000
 grey    : #3F3C3A
 marine  : #00A79F
 oil     : #425556
@@ -37,27 +37,40 @@ a, a > code {
   background-color: #97BBD5 !important;
 }
 
-/* color tweak */
-.inverse {
+/* section separator */
+.section {
   background-color: #3F3C3A;
   color: #3F3C3A;
   text-shadow: 0 0 20px #333;
 }
 
 /* slightly spacing change */
-.inverse h1, .inverse h2, .inverse h3 {
+.section h1, .section h2, .section h3 {
   color: #FFFFFF;
   line-height: 1.0em;
 }
 
-/* Dark slide */
-.dark {
+/* subsection separator */
+.subsection {
   background-color: #425556;
   color: #FFFFFF;
   text-shadow: 0 0 20px #333;
 }
 
-.dark h1, .dark h2, .dark h3 {
+.subsection h1, .subsection h2, .subsection h3 {
+  color: #FFFFFF;
+  line-height: 1.0em;
+}
+
+
+/* subsubsection separator */
+.subsubsection {
+  background-color: #00A79F;
+  color: #FFFFFF;
+  text-shadow: 0 0 20px #333;
+}
+
+.subsubsection h1, .subsubsection h2, .subsubsection h3 {
   color: #FFFFFF;
   line-height: 1.0em;
 }
@@ -69,6 +82,16 @@ a, a > code {
   height: 92%;
   float: left;
 }
+
+/* Two-column layout (slightly wider for aspect ratio) */
+.left-column {
+  color: #777;
+  width: 25%;
+  height: 92%;
+  float: left;
+}
+
+
 
 .left-column h2:last-of-type, .left-column h3:last-child {
   color: #000;
@@ -178,9 +201,9 @@ thead, tfoot, tr:nth-child(even) { background: none; }
 
 
 .title-slide {
-  background-image: url(../art/bg-exts/dots_1.png),  url(../art/bg-exts/logo_white.png), url(../art/bg-exts/rect-red.png); 
-  background-position: top right, 25px 25px , left ;
-  background-size: 50%, 100px,  230px ;
+  background-image: url(../assets/EXTS_Logo_Standalone.svg); 
+  background-position:  25px 25px ;
+  background-size: 150px ;
   background-color: #FFFFFF;
 } 
   /* 
@@ -192,7 +215,7 @@ thead, tfoot, tr:nth-child(even) { background: none; }
   font-weight: bolder;
   font-size: 50 px;
   text-align: left;
-  padding-left: 200px; 
+  padding-left: 160px; 
   padding-bottom: 18px;
   margin-bottom: 18px;
   text-shadow: none;
@@ -203,7 +226,7 @@ thead, tfoot, tr:nth-child(even) { background: none; }
   color: #425556; 
   font-size: 35px;
   text-align: left;
-  padding-left: 200px; 
+  padding-left: 160px; 
   padding-top: 0px;
   margin-top: 0px;
   text-shadow: none;
@@ -215,7 +238,7 @@ thead, tfoot, tr:nth-child(even) { background: none; }
   font-size: 28px;
   font-weight: normal;
   text-align: left;
-  padding-left: 200px; 
+  padding-left: 160px; 
   margin: 0px;
   text-shadow: none;
 }
@@ -231,7 +254,7 @@ thead, tfoot, tr:nth-child(even) { background: none; }
 
 /* section divider blue */
 .title-slide-section-sand{
-  background-image: url(../art/logos/MQ_INT_HOR_RGB_POS.png); 
+  background-image: url(../assets/logos/MQ_INT_HOR_RGB_POS.png); 
   background-position: right top;
   background-size: 400px, 1000px;
   background-color: #D6D2C4;
@@ -292,7 +315,7 @@ thead, tfoot, tr:nth-child(even) { background: none; }
 
 /* Add padding to all slides for 16:9 aspect ratio */
 .remark-slide-content {
-/*  background-image: url(../art/bg-exts/dots_1.png),  url(../art/bg-exts/logo_red.png), url(../art/bg-exts/rect-red.png);*/
+/*  background-image: url(../assets/bg-exts/dots_1.png),  url(../assets/bg-exts/logo_red.png), url(../assets/bg-exts/rect-red.png);*/
   padding-left: 100px;  /* delete this for 4:3 aspect ratio */
   font-size: 20px;  /* delete this for 4:3 aspect ratio */
 }
@@ -312,28 +335,34 @@ strong {
 Primary Palette:
 */
 
-
-red     : #E40511
+/*
+cf0000
+red     : #CF0000
 grey    : #3F3C3A
 marine  : #00A79F
 oil     : #425556
 white   : #FFFFFF
-
+*/
 .red {
-  color: #A6192E;
+  color: #CF0000;
   font-weight: bold;
 }
 
 .grey {
-  color: #A6192E;
+  color: #3F3C3A;
   font-weight: bold;
 }
 
-
-.red {
-  color: #A6192E;
+.oil {
+  color: #425556;
   font-weight: bold;
 }
+
+.marine {
+  color: #00A79F;
+  font-weight: bold;
+}
+
 /* Color adjustments to headers */
 
 h1 {
