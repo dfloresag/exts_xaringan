@@ -12,6 +12,7 @@ output:
       highlightLines: true
       countIncrementalSlides: false
       ratio: '16:9' # alternatives '16:9' or '4:3' or others e.g. 13:9
+      # ratio: '13:9' # alternatives '16:9' or '4:3' or others e.g. 13:9
       navigation:
         scroll: true # disable slide transitions by scrolling
 ---
@@ -19,32 +20,49 @@ output:
 ```{r, include  = FALSE, message= FALSE, warning = FALSE}
 library(tidyverse)
 library(icon)
-library(htmlwidgets)
+# library(htmlwidgets)
 library(leaflet)
-knitr::opts_chunk$set(echo = FALSE, message = FALSE, fig.align='center')
+# library(xaringanExtra)
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, fig.align='center', fig.height = 5)
 ```
+
+```{r icons}
+icon_download   <- fontawesome("download", style = "solid")
+icon_github     <- simple_icons("github")
+icon_thumbs_up  <- fontawesome("thumbs-up", style = "solid") 
+icon_js         <- simple_icons("javascript") 
+icon_md         <- simple_icons("markdown")
+icon_css3       <- simple_icons("css3")
+icon_r          <- simple_icons("r") 
+icon_html5      <- simple_icons("html5")
+icon_keyboard   <- fontawesome("keyboard", style = "solid")
+icon_images     <- fontawesome("images", style = "solid")
+icon_columns    <- fontawesome("columns", style = "solid")
+icon_palette    <- fontawesome("palette", style = "solid")
+icon_code       <- icon::fontawesome("code")
+```
+
 
 class: section, center, middle
 
-# `r icon::fontawesome("download", style = "solid")` Installation 
+# `r icon_download` Installation 
 
 ---
 
-# `r icon::fontawesome("download", style = "solid")` Installation 
+# `r icon_download` Installation 
 
-- The `{xaringan}` package is on [CRAN](https://cran.r-project.org/web/packages/xaringan/index.html) and the development version on the [github repo](https://github.com/yihui/xaringan)
+- The `{xaringan}` package is on [`r icon_r` CRAN](https://cran.r-project.org/web/packages/xaringan/index.html) and the development version on the [`r icon_github` github repo](https://github.com/yihui/xaringan)
 
 - Either can be installed using the usual `R` commands:
 
 ```r
 install.packages("xaringan")
-
 devtools::install_github('yihui/xaringan')
 ```
 
 --
 
-- The `exts_xaringan` [github repo](https://github.com/dfloresag/exts_xaringan) contains this template, as well as the assets: 
+- The [**`exts_xaringan`** `r icon_github` github repo](https://github.com/dfloresag/exts_xaringan) contains this template, as well as the assets: 
 
 --
 
@@ -73,7 +91,7 @@ A set of images and graphical `assets`, in particular the .red[EXTS Logo]
 
 ---
 
-# `r icon::fontawesome("download", style = "solid")` Installation 
+# `r icon_download` Installation 
 
 
 
@@ -83,12 +101,13 @@ A set of images and graphical `assets`, in particular the .red[EXTS Logo]
 - or use the [RStudio Addin](https://rstudio.github.io/rstudioaddins/)<sup>1</sup> "Infinite Moon Reader" to live preview the slides 
     - every time you update and save the Rmd document, the slides will be automatically reloaded in RStudio Viewer.
 
-- Icons can be inserted  _inline_ using the package `{icon}`
+- Icons can be inserted  _inline_ using the package `{icon}`, e.g.`r icon::simple_icons("github")` :  `icon::simple_icons("github")`. And you can retrieve the icons of the following libraries:     
 
-    - `r icon::simple_icons("github")` :  `icon::simple_icons("github")`     
-    
-    -  Here is full list of [`fontawewsome`](https://fontawesome.com/icons?d=gallery), [`simpleicons`](https://simpleicons.org/?q=html) and [academicicons](https://jpswalsh.github.io/academicons/)
-
+  - [`fontawesome()`](https://fontawesome.com/icons?d=gallery) (General Purpose)
+  
+  - [`simple_icons()`](https://simpleicons.org/?q=html) : (Popular brands) 
+  
+  - [`academicicons()`](https://jpswalsh.github.io/academicons/)  (`doi`, `moodle`, `orcid`)
 
 .footnote[
 [1] See [#2](https://github.com/yihui/xaringan/issues/2) if you do not see the template or addin in RStudio.
@@ -105,24 +124,24 @@ class: section, center, middle
 # `{xaringan}`
 
 ---
-# `r icon::fontawesome("thumbs-up", style = "solid")` What's .red[good] about `{xaringan}`? 
+# `r icon_thumbs_up` What's .red[good] about `{xaringan}`? 
 
 --
 
-### `r icon::simple_icons("javascript")` based on [`remark.js`](https://remarkjs.com/#1)
+### `r icon_js` based on [`remark.js`](https://remarkjs.com/#1)
 
-### `r icon::simple_icons("markdown")` Mardown typsetting
+### `r icon_md` Mardown typsetting
 
-### `r icon::simple_icons("css3")` Easy customisation with CSS style sheets.
+### `r icon_css3` Easy customisation with CSS
 
-### `r icon::simple_icons("r")` Well integrated with `R`
+### `r icon_r` Well integrated with `R`
 
-### `r icon::simple_icons("html5")` Rendered in `html` and easily deployed on the web
+### `r icon_html5` Rendered in `html` and easily deployed on the web
 
 ---
-# `r icon::fontawesome("thumbs-up", style = "solid")` What's .red[good] about `{xaringan}`? 
+# `r icon_thumbs_up` What's .red[good] about `{xaringan}`? 
 
-### `r icon::fontawesome("keyboard", style = "solid")` Keyboard shortcuts
+### `r icon_keyboard` Keyboard shortcuts
 
 - **h** for a list of the shortcuts.
 
@@ -143,85 +162,137 @@ class: section, center, middle
 Here are the goodies!
 
 ---
+class: section, center, middle
 
-# `r icon::fontawesome("keyboard", style = "solid")` Some Syntax
-
-Provides an R Markdown output format `xaringan::moon_reader` as a wrapper for `remark.js`, and you can use it in the YAML metadata, e.g.
-
-```yaml
----
-title: "A Cool Presentation"
-output:
-  xaringan::moon_reader:
-    yolo: true
-    nature:
-      autoplay: 30000
----
-```
-
-See the help page `?xaringan::moon_reader` for all possible options that you can use.
+# `r icon_css3` Some classes 
 
 ---
-# remark.js vs xaringan
 
-Some differences between using remark.js (left) and using **xaringan** (right):
+class: section, center, middle
 
-.pull-left[
-1. Start with a boilerplate HTML file;
-
-1. Plain Markdown;
-
-1. Write JavaScript to autoplay slides;
-
-1. Manually configure MathJax;
-
-1. Highlight code with `*`;
-
-1. Edit Markdown source and refresh browser to see updated slides;
-]
-
-.pull-right[
-1. Start with an R Markdown document;
-
-1. R Markdown (can embed R/other code chunks);
-
-1. Provide an option `autoplay`;
-
-1. MathJax just works;<sup>*</sup>
-
-1. {{Highlight}} code with `{{}}`;
-
-1. The RStudio addin "Infinite Moon Reader" automatically refreshes slides on changes;
-]
-
-.footnote[[*] With some caveats.]
-
-
----
-class: subsection, center, middle
-
-# `r icon::fontawesome("images", style = "solid")` Background Images
-
----
-background-image: url("assets/image_orig.jpeg")
-background-size: cover
-class: bottom left
-
---
-
+# Section Separator 
 
 .footnote[
 .content-box-marine[
 ```
-background-image: url("assets/image_orig.jpeg")
-background-size: cover
+class: section, center, middle
+
+# Section Separator 
 ```
 ]
+]
+
+---
+class: subsection, center, middle
+
+# Subsection Separator
+
+.footnote[
+.content-box-marine[
+```
+class: subsection, center, middle
+
+# Subsection Separator
+```
+]
+]
+
+---
+class: subsubsection, center, middle
+
+# Subsubsection Separator
+
+.footnote[
+.content-box-grey[
+```
+class: subsubsection, center, middle
+
+# Subsubsection Separator
+
+```
+]
+]
+---
+# `r icon_css3` Some classes 
+
+.pull-left[
+## Headers
+.center[
+.middle[
+# Header 1
+## Header 2
+### Heather 3
+]
+]
+]
+
+.pull-right[
+
+## Text size
+
+| .Large[Size] | .Large[class] |
+| :------: | :-----: | 
+| .Large[Large] | `.Large[]`|
+| .large[large] | `.large[]`|
+| .small[small] | `.small[]`|
+| .footnotesize[footnotesize] | `.footnotesize[]`|
+| .scriptsize[scriptsize] | `.scriptsize[]` |
+| .tiny[tiny] | `.tiny[]`| 
 
 ]
 
 ---
-# `r icon::fontawesome("palette", style = "solid")` Colored Elements
+
+class: subsection, center, middle
+
+# `r icon_images` Background Images
+
+---
+class: bottom, left
+background-image: url("assets/image_orig.jpeg")
+background-size: cover
+
+
+
+.footnote[
+
+.content-box-marine[
+```
+---
+background-image: url("assets/image_orig.jpeg")
+background-size: cover
+
+
+---
+```
+]
+]
+
+---
+
+# `r icon_columns` Column layout
+
+.pull-left[
+
+## `.pull-left[]`
+.content-box-grey[
+.center[.middle[
+# .white[45%]
+]]
+]
+
+]
+.pull-right[
+## `.pull-right[]`
+.content-box-grey[
+.center[.middle[
+# .white[45%]
+]]
+]
+]
+
+---
+# `r icon_palette` Colored Elements
 
 .pull-left[
 ### Colored Text<sup>*<sup>
@@ -233,9 +304,7 @@ background-size: cover
 |.oil["Oil"] | .oil[`.oil["Oil"]`] | .oil[`#425556`] | 
 |.marine["Marine"] | .marine[`.marine["Marine"]`] | .marine[`#00A79F`] | 
 
-
 ]
-
 
 --
 
@@ -262,44 +331,6 @@ background-size: cover
 ]
 
 ---
-class: section, center, middle
-
-# Section Separator 
-
-.footnote[
-.content-box-marine[
-```
-class: section, center, middle
-```
-]
-]
-
----
-class: subsection, center, middle
-
-# Subsection Separator
-
-.footnote[
-.content-box-marine[
-```
-class: subsection, center, middle
-```
-]
-]
-
----
-class: subsubsection, center, middle
-
-# Subsubsection Separator
-
-.footnote[
-.content-box-grey[
-```
-class: subsection, center, middle
-```
-]
-]
----
 # `r icon::fontawesome("graduation-cap", style = "solid")` Math Expressions
 
 You can write LaTeX math expressions inside a pair of dollar signs, e.g. &#36;\alpha+\beta$ renders $\alpha+\beta$. You can use the display style with double dollar signs:
@@ -322,9 +353,12 @@ Limitations:
 1. Math does not work on the title slide (see [#61](https://github.com/yihui/xaringan/issues/61) for a workaround).
 
 ---
-# `r icon::simple_icons("r")` Code Execution
+# `r icon_r` Code Execution
+
 
 .pull-left[
+
+## Code
 ```{r, echo = TRUE, comment='#'}
 # a boring regression
 fit = lm(dist ~ 1 + speed, data = cars)
@@ -333,16 +367,19 @@ coef(summary(fit))
 ]
 
 .pull-right[
+
+## Results
 ```{r cars, echo = TRUE, fig.height=3.5, dev='svg'}
+
 par(mar = c(4, 4, 1, .1))
 plot(cars, pch = 19, col = 'darkgray', las = 1)
 abline(fit, lwd = 2)
 ```
 ]
+
 ---
 
-
-# `r icon::simple_icons("r")` Tables
+# `r icon_r` Tables
 
 If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,
 
@@ -351,7 +388,7 @@ knitr::kable(head(iris), format = 'html')
 ```
 
 ---
-# `r icon::fontawesome("code")` HTML Widgets
+# `r icon_code` HTML Widgets
 
 In the words of the author, this is not bulletproof, 
 
@@ -383,92 +420,11 @@ DT::datatable(
 )
 ```
 ---
-# Some Presentation Tips
-
-- Slides can be automatically played if you set the `autoplay` option under `nature`, e.g. go to the next slide every 30 seconds in a lightning talk:
-
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        nature:
-          autoplay: 30000
-    ```
-
-- If you want to restart the play after it reaches the last slide, you may set the sub-option `loop` to TRUE, e.g.,
-
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        nature:
-          autoplay:
-            interval: 30000
-            loop: true
-    ```
-
----
-
-# Some Tips
-
-- A countdown timer can be added to every page of the slides using the `countdown` option under `nature`, e.g. if you want to spend one minute on every page when you give the talk, you can set:
-
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        nature:
-          countdown: 60000
-    ```
-
-    Then you will see a timer counting down from `01:00`, to `00:59`, `00:58`, ... When the time is out, the timer will continue but the time turns red.
-    
----
-
-# Some Tips
-
-- The title slide is created automatically by **xaringan**, but it is just another remark.js slide added before your other slides.
-
-- The title slide is set to `class: center, middle, section, title-slide` by default. You can change the classes applied to the title slide with the `titleSlideClass` option of `nature` (`title-slide` is always applied).
-
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        nature:
-          titleSlideClass: [top, left, section]
-    ```
-    
---
-
-- If you'd like to create your own title slide, disable **xaringan**'s title slide with the `seal = FALSE` option of `moon_reader`.
-
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        seal: false
-    ```
-
----
-
-# Some Tips
-
-- There are several ways to build incremental slides. See [this presentation](https://slides.yihui.org/xaringan/incremental.html) for examples.
-
-- The option `highlightLines: true` of `nature` will highlight code lines that start with `*`, or are wrapped in `{{ }}`, or have trailing comments `#<<`;
-
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        nature:
-          highlightLines: true
-    ```
-
-    See examples on the next page.
-
----
-
-# Some Tips
+# `r icon_code` highlighting Code
 
 
 .pull-left[
-An example using a leading `*`:
+Can be done using using a leading `*` in a 
 
     ```r
     if (TRUE) {
@@ -509,17 +465,52 @@ It is valid R code so you can run it. Note that `{{}}` can wrap an R expression 
 
 ---
 
-# Some Tips
+# `r icon_code` highlighting Code
 
 An example of using the trailing comment `#<<` to highlight lines:
 
-```{r echo = TRUE, tidy=FALSE, eval=FALSE}
+.pull-left[
+```{r echo = TRUE, tidy=FALSE, eval = FALSE}
+library(ggplot2)
+ggplot(mtcars) + 
+  aes(mpg, disp) + 
+  geom_point() #<<
+```
+]
+.pull-right[
+```{r echo = FALSE, tidy=FALSE}
+library(ggplot2)
+ggplot(mtcars) + 
+  aes(mpg, disp) + 
+  geom_point() #<<
+```
+]
+
+
+---
+# `r icon_code` highlighting Code
+
+An example of using the trailing comment `#<<` to highlight lines:
+
+.pull-left[
+```{r echo = TRUE, tidy=FALSE, eval = FALSE}
 library(ggplot2)
 ggplot(mtcars) + 
   aes(mpg, disp) + 
   geom_point() +   #<<
   geom_smooth()    #<<
 ```
+]
+
+.pull-right[
+```{r tidy=FALSE}
+library(ggplot2)
+ggplot(mtcars) + 
+  aes(mpg, disp) + 
+  geom_point() +   #<<
+  geom_smooth()    #<<
+```
+]
 
 ---
 
@@ -559,161 +550,12 @@ Question: what does `highlight.output = c(TRUE, FALSE)` mean? (Hint: think about
 
 ---
 
-# Macros
-
-- remark.js [allows users to define custom macros](https://github.com/yihui/xaringan/issues/80) (JS functions) that can be applied to Markdown text using the syntax `![:macroName arg1, arg2, ...]` or `![:macroName arg1, arg2, ...](this)`. For example, before remark.js initializes the slides, you can define a macro named `scale`:
-
-    ```js
-    remark.macros.scale = function (percentage) {
-      var url = this;
-      return '<img src="' + url + '" style="width: ' + percentage + '" />';
-    };
-    ```
-
-    Then the Markdown text
-
-    ```markdown
-    ![:scale 50%](image.jpg)
-    ```
-
-    will be translated to
-    
-    ```html
-    <img src="image.jpg" style="width: 50%" />
-    ```
-
----
-
-# Macros (continued)
-
-- To insert macros in **xaringan** slides, you can use the option `beforeInit` under the option `nature`, e.g.,
-
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        nature:
-          beforeInit: "macros.js"
-    ```
-
-    You save your remark.js macros in the file `macros.js`.
-
-- The `beforeInit` option can be used to insert arbitrary JS code before `remark.create()`. Inserting macros is just one of its possible applications.
-
----
-
-# CSS
-
-Among all options in `xaringan::moon_reader`, the most challenging but perhaps also the most rewarding one is `css`, because it allows you to customize the appearance of your slides using any CSS rules or hacks you know.
-
-You can see the default CSS file [here](https://github.com/yihui/xaringan/blob/master/inst/rmarkdown/templates/xaringan/resources/default.css). You can completely replace it with your own CSS files, or define new rules to override the default. See the help page `?xaringan::moon_reader` for more information.
-
----
-
-# CSS
-
-For example, suppose you want to change the font for code from the default "Source Code Pro" to "Ubuntu Mono". You can create a CSS file named, say, `ubuntu-mono.css`:
-
-```css
-@import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
-
-.remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
-```
-
-Then set the `css` option in the YAML metadata:
-
-```yaml
-output:
-  xaringan::moon_reader:
-    css: ["default", "ubuntu-mono.css"]
-```
-
-Here I assume `ubuntu-mono.css` is under the same directory as your Rmd.
-
-See [yihui/xaringan#83](https://github.com/yihui/xaringan/issues/83) for an example of using the [Fira Code](https://github.com/tonsky/FiraCode) font, which supports ligatures in program code.
-
----
-
-# Themes
-
-Don't want to learn CSS? Okay, you can use some user-contributed themes. A theme typically consists of two CSS files `foo.css` and `foo-fonts.css`, where `foo` is the theme name. Below are some existing themes:
-
-```{r, R.options=list(width = 70)}
-names(xaringan:::list_css())
-```
-
----
-class: section, middle, center
-background-image: url(https://upload.wikimedia.org/wikipedia/commons/3/39/Naruto_Shiki_Fujin.svg)
-background-size: contain
-
-# Naruto
-
----
-background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/be/Sharingan_triple.svg)
-background-size: 100px
-background-position: 90% 8%
-
-# Sharingan
-
-The R package name **xaringan** was derived<sup>1</sup> from **Sharingan**, a dōjutsu in the Japanese anime _Naruto_ with two abilities:
-
-- the "Eye of Insight"
-
-- the "Eye of Hypnotism"
-
-I think a presentation is basically a way to communicate insights to the audience, and a great presentation may even "hypnotize" the audience.<sup>2,3</sup>
-
-.footnote[
-[1] In Chinese, the pronounciation of _X_ is _Sh_ /ʃ/ (as in _shrimp_). Now you should have a better idea of how to pronounce my last name _Xie_.
-
-[2] By comparison, bad presentations only put the audience to sleep.
-
-[3] Personally I find that setting background images for slides is a killer feature of remark.js. It is an effective way to bring visual impact into your presentations.
-]
-
----
-
-# Naruto terminology
-
-The **xaringan** package borrowed a few terms from Naruto, such as
-
-- [Sharingan](https://naruto.fandom.com/wiki/Sharingan) (写輪眼; the package name)
-
-- The [moon reader](https://naruto.fandom.com/wiki/Moon_Reader) (月読; an attractive R Markdown output format)
-
-- [Chakra](https://naruto.fandom.com/wiki/Chakra) (查克拉; the path to the remark.js library, which is the power to drive the presentation)
-
-- [Nature transformation](https://naruto.fandom.com/wiki/Nature_Transformation) (性質変化; transform the chakra by setting different options)
-
-- The [infinite moon reader](https://naruto.fandom.com/wiki/Infinite_Tsukuyomi) (無限月読; start a local web server to continuously serve your slides)
-
-- The [summoning technique](https://naruto.fandom.com/wiki/Summoning_Technique) (download remark.js from the web)
-
-You can click the links to know more about them if you want. The jutsu "Moon Reader" may seem a little evil, but that does not mean your slides are evil.
-
----
-
-class: center
-
-# Hand seals (印)
-
-Press `h` or `?` to see the possible ninjutsu you can use in remark.js.
-
-![](https://upload.wikimedia.org/wikipedia/commons/7/7e/Mudra-Naruto-KageBunshin.svg)
-
----
-
-class: center, middle
+class: title-slide-final, center, middle
 
 # Thanks!
 
-Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
+.Large[Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).]
 
-The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](https://yihui.org/knitr), and [R Markdown](https://rmarkdown.rstudio.com).
+.Large[The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](https://yihui.org/knitr), and [R Markdown](https://rmarkdown.rstudio.com).]
 
 
-<!-- # Articles -->
-
-<!-- - Ziliak, S., & McCloskey, D. N. (2008). The cult of statistical significance: How the standard error costs us jobs, justice, and lives. University of Michigan Press. -->
-<!-- - Ronald L. Wasserstein & Nicole A. Lazar (2016) The ASA Statement on p-Values: Context, Process, and Purpose, The American Statistician, 70:2, 129-133,  [DOI:10.1080/00031305.2016.1154108](10.1080/00031305.2016.1154108) -->
-<!-- - Ronald L. Wasserstein, Allen L. Schirm & Nicole A. Lazar (2019) Moving to a World Beyond "p<0.05", The American Statistician, 73:sup1, 1-19, [DOI: 10.1080/00031305.2019.1583913](10.1080/00031305.2019.1583913) -->

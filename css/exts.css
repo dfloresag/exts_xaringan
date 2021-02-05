@@ -34,7 +34,7 @@ a, a > code {
 
 /* important code slightly blue */
 .remark-code-line-highlighted {
-  background-color: #cf0000 !important;
+  background-color: yellow !important;
 }
 
 /* section separator */
@@ -79,30 +79,30 @@ a, a > code {
 .left-column {
   color: #777;
   width: 25%;
-  height: 92%;
+  height: 100%;
   float: left;
 }
 
 /* Two-column layout (slightly wider for aspect ratio) */
-.left-column {
+.right-column {
   color: #777;
   width: 25%;
-  height: 92%;
-  float: left;
+  height: 100%;
+  float: right;
 }
-
-
 
 .left-column h2:last-of-type, .left-column h3:last-child {
   color: #000;
 }
 
 /* slightly thinner to support aspect ratio */
+/* 
 .right-column {
   width: 70%;
   float: right;
   padding-top: 1em;
 }
+*/ 
 
 .pull-left {
   float: left;
@@ -116,24 +116,30 @@ a, a > code {
 
 .tothe-left {
   float: left;
-  width: 55%;
+  width: 25%;
 }
 
 .tothe-right {
   float: right;
-  width: 40%;
+  width: 30%;
 }
 
 .pull-right ~ * {
   clear: both;
 }
 
+.tothe-right ~ * {
+  clear: both;
+}
+
+/*
 .column {
   float: left;
   width: 30%;
   padding: 10px;
   height: 300px; /* Should be removed. Only for demonstration */
 }
+*/
 
 /* Clear floats after the columns */
 
@@ -199,7 +205,6 @@ thead, tfoot, tr:nth-child(even) { background: none; }
 
 /* Add image and change bg color */
 
-
 .title-slide {
   background-image: url(../assets/EXTS_Logo_Standalone.svg); 
   background-position:  25px 25px ;
@@ -248,61 +253,37 @@ thead, tfoot, tr:nth-child(even) { background: none; }
   text-shadow: none;
 }
 
-/*~~~~~~~~~~~~~~~~~~*/
-/* SECTION DIVIDERS */
-/*~~~~~~~~~~~~~~~~~~*/
-
-/* section divider blue */
-.title-slide-section-sand{
-  background-image: url(../assets/logos/MQ_INT_HOR_RGB_POS.png); 
-  background-position: right top;
-  background-size: 400px, 1000px;
-  background-color: #D6D2C4;
-  padding-left: 100px;   /* delete this for 4:3 aspect ratio */
-}
-
-/* section divider blue H1 fonts */
-.title-slide-section-blue h1, .title-slide-section-blue h2, .title-slide-section-blue h3, .title-slide-section-blue p {
-  color: #006DAE;
-}
-
-.title-slide-section-blue p {
-  color: #006DAE;
-}
-
-/* section divider grey */
-.title-slide-section-grey {
-  background-color: #4C4B4C;
-  padding-left: 100px;  /* delete this for 4:3 aspect ratio */
-}
-
-/* section divider grey H1 fonts */
-.title-slide-section-grey h1, .title-slide-section-grey h2, .title-slide-section-grey h3 {
-  color: #AAA59F;
-}
-
-.title-slide-section-grey p {
-  color: #fff;
-}
 
 /*~~~~~~~~~~~~~~~~~~*/
 /* FINAL SLIDE      */
 /*~~~~~~~~~~~~~~~~~~*/
 
+/* 
+Primary Palette:
+
+red     : #cf0000
+grey    : #3F3C3A
+marine  : #00A79F
+oil     : #425556
+white   : #FFFFFF
+*/
+
+
 .title-slide-final {
-  background-color: #AAA59F;
-  color: #fff;
+  background-image: url(../assets/Discovery webinar_grey_background_zoom.png);
+  background-position: cover;
+  color: #3F3C3A;
   padding-left: 100px;
-/*  text-shadow: 0 0 3px #333; */  
+  /*text-shadow: 0 0 3px #333;*/
   text-align: center;
 }
 
 .title-slide-final h1 {
-  color: #006DAE;
+  color: #cf0000;
 }
 
 .title-slide-final h2 {
-  color: #4C4B4C;
+  color: #3F3C3A;
 }
 
 .title-slide-final h3 {
@@ -362,6 +343,10 @@ white   : #FFFFFF
   color: #00A79F;
   font-weight: bold;
 }
+.white {
+  color: #FFFFFF;
+  font-weight: bold;
+}
 
 /* Color adjustments to headers */
 
@@ -371,7 +356,7 @@ h1 {
 }
 
 h2 {
-  color: #80225F;
+  color: #425556;
 }
 
 h3 {
