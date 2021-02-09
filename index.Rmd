@@ -2,7 +2,6 @@
 title: "`{xaringan}`"
 subtitle: "A Presentation Template for the .red[Extension School]"
 author: "Daniel Flores-Agreda"
-date: "4/02/2021"
 output:
   xaringan::moon_reader:
     css: ["default", "css/exts.css", "css/exts-fonts.css"]
@@ -14,7 +13,7 @@ output:
       ratio: '16:9' # alternatives '16:9' or '4:3' or others e.g. 13:9
       # ratio: '13:9' # alternatives '16:9' or '4:3' or others e.g. 13:9
       navigation:
-        scroll: true # disable slide transitions by scrolling
+        scroll: false # disable slide transitions by scrolling
 ---
 
 ```{r, include  = FALSE, message= FALSE, warning = FALSE}
@@ -24,10 +23,13 @@ library(icon)
 library(leaflet)
 # library(xaringanExtra)
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, fig.align='center', fig.height = 5)
+options(htmltools.preserve.raw = FALSE)
+
 ```
 
 ```{r icons}
 icon_download   <- fontawesome("download", style = "solid")
+icon_edit       <- fontawesome("edit", style = "solid")
 icon_github     <- simple_icons("github")
 icon_thumbs_up  <- fontawesome("thumbs-up", style = "solid") 
 icon_js         <- simple_icons("javascript") 
@@ -79,9 +81,9 @@ The style sheets
 
 .pull-right[
 
-A set of images and graphical `assets`, in particular the .red[EXTS Logo]
+A set of images and charts, e.g.
 
-- `assets/EXTS_Logo_Standalone.svg`
+-  the .red[EXTS Logo] `assets/EXTS_Logo_Standalone.svg`
 
 ]
 
@@ -90,24 +92,30 @@ A set of images and graphical `assets`, in particular the .red[EXTS Logo]
 - To kickstart your presentation, feel free to clone the repo and make changes on this template. 
 
 ---
+class: section, center, middle
 
-# `r icon_download` Installation 
+# `r icon_edit` Edition
+
+---
+# `r icon_edit` Edition
 
 
 
-- Click the `Knit` button to compile it;
+- Click the `Knit` button to compile the `.Rmd` of your slides
 
+- Or use the [RStudio Addin](https://rstudio.github.io/rstudioaddins/)<sup>1</sup> "Infinite Moon Reader" for a live preview
 
-- or use the [RStudio Addin](https://rstudio.github.io/rstudioaddins/)<sup>1</sup> "Infinite Moon Reader" to live preview the slides 
-    - every time you update and save the Rmd document, the slides will be automatically reloaded in RStudio Viewer.
+    - every time you update and save the `.Rmd`, the slides will automatically reload in RStudio Viewer.
+
+--
 
 - Icons can be inserted  _inline_ using the package `{icon}`, e.g.`r icon::simple_icons("github")` :  `icon::simple_icons("github")`. And you can retrieve the icons of the following libraries:     
 
-  - [`fontawesome()`](https://fontawesome.com/icons?d=gallery) (General Purpose)
+  - `r icon::simple_icons("fontawesome")` [`fontawesome()`](https://fontawesome.com/icons?d=gallery): General Purpose)
   
-  - [`simple_icons()`](https://simpleicons.org/?q=html) : (Popular brands) 
+  - `r icon::simple_icons("simpleicons")` [`simple_icons()`](https://simpleicons.org/?q=html): Popular brands
   
-  - [`academicicons()`](https://jpswalsh.github.io/academicons/)  (`doi`, `moodle`, `orcid`)
+  - `r icon::fontawesome("user-graduate")` [`academicicons()`](https://jpswalsh.github.io/academicons/): e.g. `doi`, `moodle`, `orcid`, etc.
 
 .footnote[
 [1] See [#2](https://github.com/yihui/xaringan/issues/2) if you do not see the template or addin in RStudio.
@@ -383,8 +391,8 @@ abline(fit, lwd = 2)
 
 If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,
 
-```{r}
-knitr::kable(head(iris), format = 'html')
+```{r, echo = TRUE}
+iris %>% head()  %>% knitr::kable(, format = 'html')
 ```
 
 ---
@@ -403,21 +411,18 @@ The following slides are supposed to have examples however, they might not work.
 ---
 ## `{leaflet}`
 
-```{r ,out.width='100%', fig.height=6, eval=require('leaflet'), fig.align='center'}
+```{r ,out.width='100%', echo = TRUE, fig.height=6, eval=require('leaflet'), fig.align='center'}
 library(leaflet)
-leaflet() %>% 
-  addTiles() %>% 
-  setView(6.5668, 46.5191, zoom = 15)
+leaflet() %>% addTiles() %>% setView(6.5668, 46.5191, zoom = 15)
 ```
 
 ---
 ## `{DT}`
 
 ```{r, echo = TRUE, eval=require('DT'), tidy=FALSE}
-DT::datatable(
-  head(iris, 10),
-  fillContainer = FALSE, options = list(pageLength = 8)
-)
+library(DT)
+iris %>% head(10) %>%
+  datatable(fillContainer = FALSE, options = list(pageLength = 6))
 ```
 ---
 # `r icon_code` highlighting Code
