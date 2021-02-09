@@ -19,9 +19,7 @@ output:
 ```{r, include  = FALSE, message= FALSE, warning = FALSE}
 library(tidyverse)
 library(icon)
-# library(htmlwidgets)
 library(leaflet)
-# library(xaringanExtra)
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, fig.align='center', fig.height = 5)
 options(htmltools.preserve.raw = FALSE)
 
@@ -103,23 +101,23 @@ class: section, center, middle
 
 - Click the `Knit` button to compile the `.Rmd` of your slides
 
-- Or use the [RStudio Addin](https://rstudio.github.io/rstudioaddins/)<sup>1</sup> "Infinite Moon Reader" for a live preview
+- Or use the [RStudio Addin](https://rstudio.github.io/rstudioaddins/) "Infinite Moon Reader" for a live preview
 
     - every time you update and save the `.Rmd`, the slides will automatically reload in RStudio Viewer.
+    
+    - See [#2](https://github.com/yihui/xaringan/issues/2) if you do not see the addin in RStudio.
 
 --
 
-- Icons can be inserted  _inline_ using the package `{icon}`, e.g.`r icon::simple_icons("github")` :  `icon::simple_icons("github")`. And you can retrieve the icons of the following libraries:     
+- Icons can be inserted  _inline_ using the package `{icon}`, e.g.`r icon::simple_icons("github")` :  `icon::simple_icons("github")`. 
 
-  - `r icon::simple_icons("fontawesome")` [`fontawesome()`](https://fontawesome.com/icons?d=gallery): General Purpose)
-  
-  - `r icon::simple_icons("simpleicons")` [`simple_icons()`](https://simpleicons.org/?q=html): Popular brands
-  
-  - `r icon::fontawesome("user-graduate")` [`academicicons()`](https://jpswalsh.github.io/academicons/): e.g. `doi`, `moodle`, `orcid`, etc.
+- And you can use icons of the following libraries:     
 
-.footnote[
-[1] See [#2](https://github.com/yihui/xaringan/issues/2) if you do not see the template or addin in RStudio.
-]
+  - `r icon::simple_icons("fontawesome")` [`fontawesome()`](https://fontawesome.com/icons?d=gallery): General Purpose.
+  
+  - `r icon::simple_icons("simpleicons")` [`simple_icons()`](https://simpleicons.org/?q=html): Popular brands.
+  
+  - `r icon::fontawesome("user-graduate")` [`academicons()`](https://jpswalsh.github.io/academicons/):  e.g. `doi`, `moodle`, etc. 
 
 
 ---
@@ -392,7 +390,9 @@ abline(fit, lwd = 2)
 If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,
 
 ```{r, echo = TRUE}
-iris %>% head()  %>% knitr::kable(, format = 'html')
+iris %>%  
+  head()  %>% 
+  knitr::kable(format = 'html')
 ```
 
 ---
@@ -406,7 +406,7 @@ Unfortunately, Shiny mode (`runtime: shiny`) does not work. Again, in the words 
 
 .exts-blockquote[I might get these issues fixed in the future, but these are not of high priority to me. I never turn my presentation into a Shiny app.]
 
-The following slides are supposed to have examples however, they might not work.
+The following slides have examples that work after implementing [a workaround](https://stackoverflow.com/questions/65766516/xaringan-presentation-not-displaying-html-widgets-even-when-knitting-provided-t).
 
 ---
 ## `{leaflet}`
@@ -425,11 +425,11 @@ iris %>% head(10) %>%
   datatable(fillContainer = FALSE, options = list(pageLength = 6))
 ```
 ---
-# `r icon_code` highlighting Code
+# `r icon_code` Highlighting Code
 
 
 .pull-left[
-Can be done using using a leading `*` in a 
+Can be done using using a leading `*` in a fenced code block
 
     ```r
     if (TRUE) {
@@ -459,20 +459,21 @@ if (TRUE) {
 ````
 
 Output:
-```{r tidy=FALSE}
+```{r tidy=FALSE, echo = TRUE}
 if (TRUE) {
 {{ message("Very important!") }}
 }
 ```
 
-It is valid R code so you can run it. Note that `{{}}` can wrap an R expression of multiple lines.
+- It is valid R code that you can run it. 
+- `{{}}` can wrap an R expression of multiple lines.
 ]
 
 ---
 
-# `r icon_code` highlighting Code
+# `r icon_code` Highlighting Code
 
-An example of using the trailing comment `#<<` to highlight lines:
+An example of using the trailing comment `#<<` to highlight lines
 
 .pull-left[
 ```{r echo = TRUE, tidy=FALSE, eval = FALSE}
@@ -493,9 +494,9 @@ ggplot(mtcars) +
 
 
 ---
-# `r icon_code` highlighting Code
+# `r icon_code` Highlighting Code
 
-An example of using the trailing comment `#<<` to highlight lines:
+An example of using the trailing comment `#<<` to highlight lines
 
 .pull-left[
 ```{r echo = TRUE, tidy=FALSE, eval = FALSE}
@@ -519,9 +520,11 @@ ggplot(mtcars) +
 
 ---
 
-# Some Tips
+# `r icon_code` Highlighting Output
 
-When you enable line-highlighting, you can also use the chunk option `highlight.output` to highlight specific lines of the text output from a code chunk. For example, `highlight.output = TRUE` means highlighting all lines, and `highlight.output = c(1, 3)` means highlighting the first and third line.
+- Enabling line-highlighting allows the chunk option `highlight.output` to highlight specific lines of the text output from a code chunk. For example:
+  - `highlight.output = TRUE` highlights all the lines, 
+  - `highlight.output = c(1, 3)`  highlights the first and third line.
 
 ````md
 `r ''````{r, highlight.output=c(1, 3)}
@@ -533,17 +536,19 @@ head(iris)
 head(iris)
 ```
 
-Question: what does `highlight.output = c(TRUE, FALSE)` mean? (Hint: think about R's recycling of vectors)
+
 
 ---
 
-# Some Tips
+# `r icon::fontawesome("desktop", style = "solid")` Presentation Tips
 
-- To make slides work offline, you need to download a copy of remark.js in advance, because **xaringan** uses the online version by default (see the help page `?xaringan::moon_reader`).
+- To make slides work offline, you need to download a copy of `remark.js` in advance, because **xaringan** uses the online version by default (see the help page `?xaringan::moon_reader`).
 
-- You can use `xaringan::summon_remark()` to download the latest or a specified version of remark.js. By default, it is downloaded to `libs/remark-latest.min.js`.
+  - Use `xaringan::summon_remark()` to download the latest or a specified version of `remark.js`. 
+  
+  - By default, it is downloaded to `libs/remark-latest.min.js`.
 
-- Then change the `chakra` option in YAML to point to this file, e.g.
+  - Then change the `chakra` option in YAML to point to this file, e.g.
 
     ```yaml
     output:
@@ -551,7 +556,9 @@ Question: what does `highlight.output = c(TRUE, FALSE)` mean? (Hint: think about
         chakra: libs/remark-latest.min.js
     ```
 
-- If you used Google fonts in slides (the default theme uses _Yanone Kaffeesatz_, _Droid Serif_, and _Source Code Pro_), they won't work offline unless you download or install them locally. The Heroku app [google-webfonts-helper](https://google-webfonts-helper.herokuapp.com/fonts) can help you download fonts and generate the necessary CSS.
+- If you used Google fonts in slides (the default theme uses _Yanone Kaffeesatz_, _Droid Serif_, and _Source Code Pro_), they won't work offline unless you download or install them locally. 
+  
+  - The Heroku app [google-webfonts-helper](https://google-webfonts-helper.herokuapp.com/fonts) can help you download fonts and generate the necessary CSS.
 
 ---
 
@@ -559,7 +566,7 @@ class: title-slide-final, center, middle
 
 # Thanks!
 
-.Large[Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).]
+.Large[Slides created via the R package [**{xaringan}**](https://github.com/yihui/xaringan).]
 
 .Large[The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](https://yihui.org/knitr), and [R Markdown](https://rmarkdown.rstudio.com).]
 

@@ -15,7 +15,6 @@ h1, h2, h3 {
 .remark-code, .remark-inline-code { font-family: 'Inconsolata', monospace; }
 .remark-code-line-highlighted     { background-color: #ffff88; }
 
-
 /*Fontsize a la latex*/
 
 .Large       , .Large .remark-code, .Large .remark-inline-code { font-size: 144%; }

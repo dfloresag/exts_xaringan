@@ -20,7 +20,8 @@ white   : #FFFFFF
 /* Package defaults */
 
 a, a > code {
-  color: #97BBD5; /* blue accent 2 */
+  color: #00A79F; 
+  font-weight: bolder;
   text-decoration: none;
 }
 
@@ -198,12 +199,12 @@ thead, tfoot, tr:nth-child(even) { background: none; }
 }
 
 /*~~~~~>>~~~~~~~~~*/
-/* MIDD additions */
+/* EXTS additions */
 /*~~~~~~~>>~~~~~~~*/
 
 /* Title slide */
 
-/* Add image and change bg color */
+/* Add logo*/
 
 .title-slide {
   background-image: url(../assets/EXTS_Logo_Standalone.svg); 
@@ -211,8 +212,6 @@ thead, tfoot, tr:nth-child(even) { background: none; }
   background-size: 150px ;
   background-color: #FFFFFF;
 } 
-  /* 
-
 
 /* H1 fonts */
 .title-slide h1 {
@@ -270,12 +269,13 @@ white   : #FFFFFF
 
 
 .title-slide-final {
-  background-image: url(../assets/Discovery webinar_grey_background_zoom.png);
-  background-position: cover;
-  color: #3F3C3A;
+  background-image: url(../assets/EXTS_Logo_Standalone.svg); 
+  background-position:  25px 25px ;
+  background-size: 150px ;
+  background-color: #FFFFFF;
   padding-left: 100px;
   /*text-shadow: 0 0 3px #333;*/
-  text-align: center;
+  /*text-align: center;*/
 }
 
 .title-slide-final h1 {
@@ -296,20 +296,15 @@ white   : #FFFFFF
 
 /* Add padding to all slides for 16:9 aspect ratio */
 .remark-slide-content {
-/*  background-image: url(../assets/bg-exts/dots_1.png),  url(../assets/bg-exts/logo_red.png), url(../assets/bg-exts/rect-red.png);*/
   padding-left: 100px;  /* delete this for 4:3 aspect ratio */
   font-size: 20px;  /* delete this for 4:3 aspect ratio */
 }
 
 /* Color adjustments for text */
 
-/* Make bold syntax compile to midd-blue */
+/* Make bold syntax compile to red */
 strong {
-  color: #D6001C;
-}
-
-.RUred {
-  color: #cc0033;
+  color: #CF0000;
 }
 
 /* 
@@ -365,7 +360,7 @@ h3 {
 }
 
 body{
-  font-size: large;
+  font-size: Large;
 }
 
 /* Font size tags */
