@@ -16,13 +16,26 @@ output:
         scroll: false # disable slide transitions by scrolling
 ---
 
-```{r, include  = FALSE, message= FALSE, warning = FALSE}
+```{r setup, include= FALSE, message= FALSE, warning = FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE, 
+  message = FALSE,
+  warning = FALSE,
+  fig.align='center',
+  fig.height = 5)
+```
+
+```{r packs, include=FALSE}
 library(tidyverse)
 library(icon)
 library(leaflet)
-knitr::opts_chunk$set(echo = FALSE, message = FALSE, fig.align='center', fig.height = 5)
-options(htmltools.preserve.raw = FALSE)
+```
 
+```{r html_options, include  = FALSE}
+# workaround to get htmlwidgets working
+options(
+  htmltools.preserve.raw = FALSE
+  )
 ```
 
 ```{r icons}
@@ -39,7 +52,7 @@ icon_keyboard   <- fontawesome("keyboard", style = "solid")
 icon_images     <- fontawesome("images", style = "solid")
 icon_columns    <- fontawesome("columns", style = "solid")
 icon_palette    <- fontawesome("palette", style = "solid")
-icon_code       <- icon::fontawesome("code")
+icon_code       <- fontawesome("code")
 ```
 
 
@@ -559,6 +572,16 @@ head(iris)
 - If you used Google fonts in slides (the default theme uses _Yanone Kaffeesatz_, _Droid Serif_, and _Source Code Pro_), they won't work offline unless you download or install them locally. 
   
   - The Heroku app [google-webfonts-helper](https://google-webfonts-helper.herokuapp.com/fonts) can help you download fonts and generate the necessary CSS.
+
+---
+class: section, center, middle
+
+# `r icon::fontawesome("clock", style = "solid")` Countdown
+
+```{r}
+library(countdown)
+countdown(minutes = 0, seconds = 15)
+```
 
 ---
 
