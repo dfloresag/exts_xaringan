@@ -10,8 +10,7 @@ output:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
-      ratio: '16:9' # alternatives '16:9' or '4:3' or others e.g. 13:9
-      # ratio: '13:9' # alternatives '16:9' or '4:3' or others e.g. 13:9
+      ratio: '16:9'
       navigation:
         scroll: false # disable slide transitions by scrolling
 ---
@@ -25,35 +24,10 @@ knitr::opts_chunk$set(
   fig.height = 5)
 ```
 
-```{r packs, include=FALSE}
-library(tidyverse)
-library(icon)
-library(leaflet)
+```{r r_setup, include = FALSE}
+source("R/exts_xaringan_r_setup.R")
 ```
 
-```{r html_options, include  = FALSE}
-# workaround to get htmlwidgets working
-options(
-  htmltools.preserve.raw = FALSE
-  )
-```
-
-```{r icons}
-icon_download   <- fontawesome("download", style = "solid")
-icon_edit       <- fontawesome("edit", style = "solid")
-icon_github     <- simple_icons("github")
-icon_thumbs_up  <- fontawesome("thumbs-up", style = "solid") 
-icon_js         <- simple_icons("javascript") 
-icon_md         <- simple_icons("markdown")
-icon_css3       <- simple_icons("css3")
-icon_r          <- simple_icons("r") 
-icon_html5      <- simple_icons("html5")
-icon_keyboard   <- fontawesome("keyboard", style = "solid")
-icon_images     <- fontawesome("images", style = "solid")
-icon_columns    <- fontawesome("columns", style = "solid")
-icon_palette    <- fontawesome("palette", style = "solid")
-icon_code       <- fontawesome("code")
-```
 
 
 class: section, center, middle
@@ -130,9 +104,11 @@ class: section, center, middle
   
   - `r icon::simple_icons("simpleicons")` [`simple_icons()`](https://simpleicons.org/?q=html): Popular brands.
   
-  - `r icon::fontawesome("user-graduate")` [`academicons()`](https://jpswalsh.github.io/academicons/):  e.g. `doi`, `moodle`, etc. 
+  - `r icon::fontawesome("user-graduate")` [`academicons()`](https://jpswalsh.github.io/academicons/):  e.g. `doi`, `moodle`, etc<sup>*</sup>.
 
-
+.footnote[
+[*]  Currently it the things are 
+]
 ---
 background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/be/Sharingan_triple.svg)
 background-size: 550px
@@ -555,23 +531,29 @@ head(iris)
 
 # `r icon::fontawesome("desktop", style = "solid")` Presentation Tips
 
-- To make slides work offline, you need to download a copy of `remark.js` in advance, because **xaringan** uses the online version by default (see the help page `?xaringan::moon_reader`).
+- To access the style sheets remotely, you can create a `{xaringan}` document and modify the `output` argument in the `YAML` as follows: 
 
-  - Use `xaringan::summon_remark()` to download the latest or a specified version of `remark.js`. 
-  
-  - By default, it is downloaded to `libs/remark-latest.min.js`.
 
-  - Then change the `chakra` option in YAML to point to this file, e.g.
+```yaml
+output:
+  xaringan::moon_reader:
+    css: ["default", "https://dfloresag.github.io/exts_xaringan/css/exts.css", "https://dfloresag.github.io/exts_xaringan/css/exts-fonts.css"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '16:9'
+      navigation:
+        scroll: false 
+```
 
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        chakra: libs/remark-latest.min.js
-    ```
+- the `ratio` argument can also be modified to fit different screens: `'4:3'` or `'13:9'`
 
-- If you used Google fonts in slides (the default theme uses _Yanone Kaffeesatz_, _Droid Serif_, and _Source Code Pro_), they won't work offline unless you download or install them locally. 
-  
-  - The Heroku app [google-webfonts-helper](https://google-webfonts-helper.herokuapp.com/fonts) can help you download fonts and generate the necessary CSS.
+---
+class: section, center, middle
+
+# `r icon::fontawesome("clock", style = "solid")` Countdown
 
 ---
 class: section, center, middle
@@ -579,9 +561,25 @@ class: section, center, middle
 # `r icon::fontawesome("clock", style = "solid")` Countdown
 
 ```{r}
-library(countdown)
-countdown(minutes = 0, seconds = 15)
+countdown_exts(minutes = 0, seconds = 15, top = 0)
 ```
+
+```{r}
+countdown_exts(minutes = 0, seconds = 15, bottom = 0)
+```
+
+```{r}
+countdown(minutes = 0, seconds = 15, left = 0)
+```
+
+---
+# `r icon::fontawesome("clock", style = "solid")` Countdown
+=
+```{r}
+countdown_exts(minutes = 0, seconds = 15, left = 0, right=0, top = "33%",           
+               padding = "50px",margin = "5%",font_size = "6em")
+```
+
 
 ---
 
