@@ -138,8 +138,7 @@ a, a > code {
   float: left;
   width: 30%;
   padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration */
-}
+  height: 300px; /* Should be removed. Only for demonstration} 
 */
 
 /* Clear floats after the columns */
@@ -424,4 +423,28 @@ body{
     display: flex;
     width: 100%;
     flex: 1 1 auto;
+}
+
+.highlight-container, .highlight {
+  position: relative;
+}
+
+.highlight-container {
+  display: inline-block;
+}
+
+.highlight-container:before {
+  content: " ";
+  display: block;
+  height: 90%;
+  width: 100%;
+  margin-left: -3px;
+  margin-right: -3px;
+  position: absolute;
+  background: rgba(234, 221, 6, 0.3);
+  transform: rotate(2deg);
+  top: -1px;
+  left: -1px;
+  border-radius: 20% 25% 20% 24%;
+  padding: 10px 3px 3px 10px;
 }

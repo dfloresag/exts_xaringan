@@ -4,7 +4,7 @@ subtitle: "A Presentation Template for the .red[Extension School]"
 author: "Daniel Flores-Agreda"
 output:
   xaringan::moon_reader:
-    css: ["default", "css/exts.css", "css/exts-fonts.css"]
+    css: ["default", "https://dfloresag.github.io/exts_xaringan/css/exts.css", "https://dfloresag.github.io/exts_xaringan/css/exts-fonts.css"]
     lib_dir: libs
     nature:
       highlightStyle: github
