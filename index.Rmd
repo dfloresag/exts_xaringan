@@ -28,8 +28,6 @@ knitr::opts_chunk$set(
 devtools::source_url("https://raw.githubusercontent.com/dfloresag/exts_xaringan/main/R/setup.R")
 ```
 
-
-
 class: section, center, middle
 
 # `r icon_download` Installation 
@@ -247,8 +245,6 @@ class: bottom, left
 background-image: url("assets/image_orig.jpeg")
 background-size: cover
 
-
-
 .footnote[
 
 .content-box-marine[
@@ -264,7 +260,68 @@ background-size: cover
 ]
 
 ---
+background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/be/Sharingan_triple.svg)
+background-size: 550px
+background-position: 90% 50%
 
+# `r icon_images` Size
+
+
+
+
+.pull-left[
+.middle[
+.content-box-marine[
+
+```
+background-size: 550px
+background-position: 90% 50%
+```
+]
+]
+]
+
+---
+background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/be/Sharingan_triple.svg)
+background-size: 300px
+background-position: 90% 50%
+
+# `r icon_images` Size
+
+
+
+
+.pull-left[
+.middle[
+.content-box-marine[
+
+```
+background-size: 300px
+background-position: 90% 50%
+```
+]
+]
+]
+---
+background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/be/Sharingan_triple.svg)
+background-size: 300px
+background-position: 90% 80%
+
+# `r icon_images` Position
+
+.pull-left[
+.middle[
+.content-box-marine[
+
+```
+background-size: 300px
+background-position: 90% 80%
+```
+]
+]
+]
+
+---
 # `r icon_columns` Column layout
 
 .pull-left[
