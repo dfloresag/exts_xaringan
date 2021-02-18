@@ -25,7 +25,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r r_setup, include = FALSE}
-source("R/exts_xaringan_r_setup.R")
+devtools::source_url("https://raw.githubusercontent.com/dfloresag/exts_xaringan/main/R/setup.R")
 ```
 
 
@@ -534,22 +534,27 @@ head(iris)
 - To access the style sheets remotely, you can create a `{xaringan}` document and modify the `output` argument in the `YAML` as follows: 
 
 
-```yaml
-output:
-  xaringan::moon_reader:
-    css: ["default", "https://dfloresag.github.io/exts_xaringan/css/exts.css", "https://dfloresag.github.io/exts_xaringan/css/exts-fonts.css"]
-    lib_dir: libs
-    nature:
-      highlightStyle: github
-      highlightLines: true
-      countIncrementalSlides: false
-      ratio: '16:9'
-      navigation:
-        scroll: false 
-```
+  ```yaml
+  output:
+    xaringan::moon_reader:
+      css: ["default", "https://dfloresag.github.io/exts_xaringan/css/exts.css", "https://dfloresag.github.io/exts_xaringan/css/exts-fonts.css"]
+      lib_dir: libs
+      nature:
+        highlightStyle: github
+        highlightLines: true
+        countIncrementalSlides: false
+        ratio: '16:9'
+        navigation:
+          scroll: false 
+  ```
 
-- the `ratio` argument can also be modified to fit different screens: `'4:3'` or `'13:9'`
+- The `ratio` argument can also be modified to fit different screens: `'4:3'` or `'13:9'`
 
+- Finally, you have to source `setup.R`. You can do this remotely with `devtools::source_url()`
+
+  ```r
+  devtools::source_url("https://raw.githubusercontent.com/dfloresag/exts_xaringan/main/R/setup.R")
+  ```
 ---
 class: section, center, middle
 
@@ -569,12 +574,12 @@ countdown_exts(minutes = 0, seconds = 15, bottom = 0)
 ```
 
 ```{r}
-countdown(minutes = 0, seconds = 15, left = 0)
+countdown_exts(minutes = 0, seconds = 15, left = 0)
 ```
 
 ---
 # `r icon::fontawesome("clock", style = "solid")` Countdown
-=
+
 ```{r}
 countdown_exts(minutes = 0, seconds = 15, left = 0, right=0, top = "33%",           
                padding = "50px",margin = "5%",font_size = "6em")
