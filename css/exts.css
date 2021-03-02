@@ -418,6 +418,13 @@ body{
   background: none;
 }
 
+.content-box-red  .remark-inline-code,
+.content-box-grey  .remark-inline-code,
+.content-box-marine  .remark-inline-code,
+.content-box-oil  .remark-inline-code{
+ color: #FFFFFF; 
+}
+
 
 .full-width {
     display: flex;
