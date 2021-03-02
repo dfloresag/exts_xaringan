@@ -12,8 +12,25 @@ h1, h2, h3 {
   font-weight: bolder;
 }
 
-.remark-code, .remark-inline-code { font-family: 'Inconsolata', monospace; }
-.remark-code-line-highlighted     { background-color: #ffff88; }
+.remark-code, .remark-inline-code { 
+  font-family: 'Inconsolata', monospace; 
+} 
+
+.remark-inline-code { 
+  color: #cf0000;
+  background-color: #F2F1F1;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  padding: 2px;
+  margin: 2px;
+  border-radius: 5px;
+}
+
+.remark-code-line-highlighted{ 
+  background-color: #ffff88; 
+}
 
 /*Fontsize a la latex*/
 

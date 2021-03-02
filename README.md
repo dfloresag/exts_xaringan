@@ -73,10 +73,10 @@ icon::download_simple_icons()
 icon::download_academicons()
 ```
 
-## A word on `{htmlwidgets}`
+## A word on `htmlwidgets`
 
-To use html widgets you need to include a chunk that sets the options
-for `htmltools`.
+To use html widgets such as `{leaflet}`, `{DT}` and so on, you need to
+include a chunk that sets the options for `{htmltools}`.
 
     options(htmltools.preserve.raw = FALSE)
 
