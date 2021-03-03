@@ -78,17 +78,13 @@ a, a > code {
 
 /* Two-column layout (slightly wider for aspect ratio) */
 .left-column {
-  color: #777;
   width: 25%;
-  height: 100%;
   float: left;
 }
 
 /* Two-column layout (slightly wider for aspect ratio) */
 .right-column {
-  color: #777;
-  width: 25%;
-  height: 100%;
+  width: 65%;
   float: right;
 }
 
@@ -122,16 +118,19 @@ a, a > code {
 
 .tothe-right {
   float: right;
-  width: 30%;
+  width: 65%;
 }
 
 .pull-right ~ * {
   clear: both;
 }
-
 .tothe-right ~ * {
   clear: both;
 }
+.right-column ~ * {
+  clear: both;
+}
+
 
 /*
 .column {
