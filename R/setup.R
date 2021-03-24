@@ -1,5 +1,5 @@
 library(tidyverse)
-library(icon)
+library(icons)
 library(countdown)
 
 # workaround to get htmlwidgets working
