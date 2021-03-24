@@ -47,30 +47,30 @@ to take into account, the installation and use of additional packages.
 ### Using additional packages
 
 The template uses a couple of packages that are not listed on CRAN,
-namely: [`{icon}`](https://github.com/mitchelloharawild/icon) and
+namely: [`{icons}`](https://github.com/mitchelloharawild/icon) and
 [`{countdown}`](https://github.com/gadenbuie/countdown) both available
 in their respective Github repositiories, hence ready to install with
 `devtools::install_github()`.
 
 ``` r
-# Install {icon}
-devtools::install_github("https://github.com/mitchelloharawild/icon")
+# Install {icons}
+devtools::install_github("https://github.com/mitchelloharawild/icons")
 
 # Install {countdown}
 devtools::install_github("https://github.com/gadenbuie/countdown")
 ```
 
-#### Using `{icon}`
+#### Using `{icons}`
 
-The `{icon}` package requires the download of icon libraries. The
+The `{icons}` package requires the download of icon libraries. The
 template uses the libraries `fontawesome`, `simple_icons` and
 `academicons`. These libraries can be installed locally with the
 dedicated `download_` functions:
 
 ``` r
-icon::download_fontawesome()
-icon::download_simple_icons()
-icon::download_academicons()
+icons::download_fontawesome()
+icons::download_simple_icons()
+icons::download_academicons()
 ```
 
 ## A word on `htmlwidgets`
