@@ -205,9 +205,9 @@ thead, tfoot, tr:nth-child(even) { background: none; }
 /* Add logo*/
 
 .title-slide {
-  background-image: url(../assets/EXTS_Logo_Standalone.svg); 
+  background-image: url(../assets/Extension-school-logo-2023-positif.png); 
   background-position:  25px 25px ;
-  background-size: 150px ;
+  background-size: 200px ;
   background-color: #FFFFFF;
 } 
 
